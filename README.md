@@ -3,6 +3,7 @@ DayNote
 1. Silva Anggraini (192410102032)
 
 https://github.com/silvanggraini
+
 2. Shintia Anggi D.P. (192410102058)
 
 https://github.com/shintiaanggi12
