@@ -1,6 +1,6 @@
 {
-    "name": "daynote",
-    "short_name": "daynote",
+    "name": "diary_activity_app",
+    "short_name": "diary_activity_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
