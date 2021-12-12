@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:daynote/controllers/auth_controller.dart';
-import 'package:daynote/pages/login_page.dart';
 import 'package:daynote/theme.dart';
 import 'package:daynote/wrap.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _pass = TextEditingController();
-  final TextEditingController _confpass = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +44,13 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(
               height: 30,
             ),
-            Text(
-              'Create a new account',
-              style: myText.copyWith(fontSize: 18, fontWeight: FontWeight.w900),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: Text(
+                '   Login',
+                style:
+                    myText.copyWith(fontSize: 18, fontWeight: FontWeight.w900),
+              ),
             ),
             Form(
               key: _formKey,
@@ -104,35 +106,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 18,
-                    ),
-                    TextFormField(
-                      controller: _confpass,
-                      validator: (value) {
-                        if (_pass.text != _confpass.text) {
-                          return 'Konfirmasi password gagal';
-                        }
-                        return null;
-                      },
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: "Konfirmasi password",
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        suffixIcon: Icon(
-                          Icons.lock,
-                          color: kText,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
                       height: 50,
                     ),
                     ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          await AuthServices.signUp(_email.text, _pass.text);
+                          await AuthServices.signIn(_email.text, _pass.text);
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -142,7 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ;
                       },
                       child: Text(
-                        'Get Started',
+                        'Login',
                       ),
                       style: ElevatedButton.styleFrom(
                           primary: kBlue,
@@ -153,28 +132,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     SizedBox(
                       height: 20,
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()));
-                      },
-                      child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                              text: 'Already have an account? ',
-                              style:
-                                  myText.copyWith(fontWeight: FontWeight.w500)),
-                          TextSpan(
-                              text: 'Login',
-                              style: myText.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic))
-                        ]),
-                      ),
-                    )
                   ],
                 ),
               ),

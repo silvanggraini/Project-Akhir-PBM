@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:daynote/pages/enter_pin_page.dart';
+import 'package:daynote/pages/login_page.dart';
+import 'package:daynote/pages/register_page.dart';
 import 'package:daynote/theme.dart';
 
 class SplashPage extends StatelessWidget {
@@ -46,7 +49,10 @@ class SplashPage extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/register');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RegisterPage()));
                         },
                         child: Text('Sign Up'),
                         style: ElevatedButton.styleFrom(
@@ -57,7 +63,10 @@ class SplashPage extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/register');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
                         },
                         child: Text(
                           'Login',
